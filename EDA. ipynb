@@ -1,0 +1,402 @@
+
+!pip install seaborn
+Collecting seaborn
+  Downloading seaborn-0.13.2-py3-none-any.whl.metadata (5.4 kB)
+Requirement already satisfied: numpy!=1.24.0,>=1.20 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from seaborn) (2.4.6)
+Requirement already satisfied: pandas>=1.2 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from seaborn) (3.0.3)
+Requirement already satisfied: matplotlib!=3.6.1,>=3.4 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from seaborn) (3.10.9)
+Requirement already satisfied: contourpy>=1.0.1 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.3.3)
+Requirement already satisfied: cycler>=0.10 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (4.63.0)
+Requirement already satisfied: kiwisolver>=1.3.1 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.5.0)
+Requirement already satisfied: packaging>=20.0 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (26.2)
+Requirement already satisfied: pillow>=8 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (12.2.0)
+Requirement already satisfied: pyparsing>=3 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (3.3.2)
+Requirement already satisfied: python-dateutil>=2.7 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (2.9.0.post0)
+Requirement already satisfied: tzdata in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from pandas>=1.2->seaborn) (2026.2)
+Requirement already satisfied: six>=1.5 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from python-dateutil>=2.7->matplotlib!=3.6.1,>=3.4->seaborn) (1.17.0)
+Downloading seaborn-0.13.2-py3-none-any.whl (294 kB)
+Installing collected packages: seaborn
+Successfully installed seaborn-0.13.2
+[notice] A new release of pip is available: 26.1.1 -> 26.1.2
+[notice] To update, run: C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\python.exe -m pip install --upgrade pip
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+#%matplotlib inline
+# Load the dataset
+iris = sns.load_dataset('iris')
+# Display first 5 rows
+iris.head()
+sepal_length	sepal_width	petal_length	petal_width	species
+0	5.1	3.5	1.4	0.2	setosa
+1	4.9	3.0	1.4	0.2	setosa
+2	4.7	3.2	1.3	0.2	setosa
+3	4.6	3.1	1.5	0.2	setosa
+4	5.0	3.6	1.4	0.2	setosa
+!pip install scikit-learn
+Requirement already satisfied: scikit-learn in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (1.9.0)
+Requirement already satisfied: numpy>=1.24.1 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (2.4.6)
+Requirement already satisfied: scipy>=1.10.0 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (1.17.1)
+Requirement already satisfied: joblib>=1.4.0 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (1.5.3)
+Requirement already satisfied: narwhals>=2.0.1 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (2.22.1)
+Requirement already satisfied: threadpoolctl>=3.5.0 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (3.6.0)
+[notice] A new release of pip is available: 26.1.1 -> 26.1.2
+[notice] To update, run: C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\python.exe -m pip install --upgrade pip
+import sklearn
+print(sklearn.__version__)
+1.9.0
+from sklearn.datasets import load_iris
+iris_data = load_iris()
+type(iris_data)
+sklearn.utils._bunch.Bunch
+iris_data.keys()
+dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename', 'data_module'])
+# feature names (variable names)
+iris_data['feature_names']
+['sepal length (cm)',
+ 'sepal width (cm)',
+ 'petal length (cm)',
+ 'petal width (cm)']
+# dependdent variable                                                                         
+iris_data['target_names']
+array(['setosa', 'versicolor', 'virginica'], dtype='<U10')
+iris_data['data']
+array([[5.1, 3.5, 1.4, 0.2],
+       [4.9, 3. , 1.4, 0.2],
+       [4.7, 3.2, 1.3, 0.2],
+       [4.6, 3.1, 1.5, 0.2],
+       [5. , 3.6, 1.4, 0.2],
+       [5.4, 3.9, 1.7, 0.4],
+       [4.6, 3.4, 1.4, 0.3],
+       [5. , 3.4, 1.5, 0.2],
+       [4.4, 2.9, 1.4, 0.2],
+       [4.9, 3.1, 1.5, 0.1],
+       [5.4, 3.7, 1.5, 0.2],
+       [4.8, 3.4, 1.6, 0.2],
+       [4.8, 3. , 1.4, 0.1],
+       [4.3, 3. , 1.1, 0.1],
+       [5.8, 4. , 1.2, 0.2],
+       [5.7, 4.4, 1.5, 0.4],
+       [5.4, 3.9, 1.3, 0.4],
+       [5.1, 3.5, 1.4, 0.3],
+       [5.7, 3.8, 1.7, 0.3],
+       [5.1, 3.8, 1.5, 0.3],
+       [5.4, 3.4, 1.7, 0.2],
+       [5.1, 3.7, 1.5, 0.4],
+       [4.6, 3.6, 1. , 0.2],
+       [5.1, 3.3, 1.7, 0.5],
+       [4.8, 3.4, 1.9, 0.2],
+       [5. , 3. , 1.6, 0.2],
+       [5. , 3.4, 1.6, 0.4],
+       [5.2, 3.5, 1.5, 0.2],
+       [5.2, 3.4, 1.4, 0.2],
+       [4.7, 3.2, 1.6, 0.2],
+       [4.8, 3.1, 1.6, 0.2],
+       [5.4, 3.4, 1.5, 0.4],
+       [5.2, 4.1, 1.5, 0.1],
+       [5.5, 4.2, 1.4, 0.2],
+       [4.9, 3.1, 1.5, 0.2],
+       [5. , 3.2, 1.2, 0.2],
+       [5.5, 3.5, 1.3, 0.2],
+       [4.9, 3.6, 1.4, 0.1],
+       [4.4, 3. , 1.3, 0.2],
+       [5.1, 3.4, 1.5, 0.2],
+       [5. , 3.5, 1.3, 0.3],
+       [4.5, 2.3, 1.3, 0.3],
+       [4.4, 3.2, 1.3, 0.2],
+       [5. , 3.5, 1.6, 0.6],
+       [5.1, 3.8, 1.9, 0.4],
+       [4.8, 3. , 1.4, 0.3],
+       [5.1, 3.8, 1.6, 0.2],
+       [4.6, 3.2, 1.4, 0.2],
+       [5.3, 3.7, 1.5, 0.2],
+       [5. , 3.3, 1.4, 0.2],
+       [7. , 3.2, 4.7, 1.4],
+       [6.4, 3.2, 4.5, 1.5],
+       [6.9, 3.1, 4.9, 1.5],
+       [5.5, 2.3, 4. , 1.3],
+       [6.5, 2.8, 4.6, 1.5],
+       [5.7, 2.8, 4.5, 1.3],
+       [6.3, 3.3, 4.7, 1.6],
+       [4.9, 2.4, 3.3, 1. ],
+       [6.6, 2.9, 4.6, 1.3],
+       [5.2, 2.7, 3.9, 1.4],
+       [5. , 2. , 3.5, 1. ],
+       [5.9, 3. , 4.2, 1.5],
+       [6. , 2.2, 4. , 1. ],
+       [6.1, 2.9, 4.7, 1.4],
+       [5.6, 2.9, 3.6, 1.3],
+       [6.7, 3.1, 4.4, 1.4],
+       [5.6, 3. , 4.5, 1.5],
+       [5.8, 2.7, 4.1, 1. ],
+       [6.2, 2.2, 4.5, 1.5],
+       [5.6, 2.5, 3.9, 1.1],
+       [5.9, 3.2, 4.8, 1.8],
+       [6.1, 2.8, 4. , 1.3],
+       [6.3, 2.5, 4.9, 1.5],
+       [6.1, 2.8, 4.7, 1.2],
+       [6.4, 2.9, 4.3, 1.3],
+       [6.6, 3. , 4.4, 1.4],
+       [6.8, 2.8, 4.8, 1.4],
+       [6.7, 3. , 5. , 1.7],
+       [6. , 2.9, 4.5, 1.5],
+       [5.7, 2.6, 3.5, 1. ],
+       [5.5, 2.4, 3.8, 1.1],
+       [5.5, 2.4, 3.7, 1. ],
+       [5.8, 2.7, 3.9, 1.2],
+       [6. , 2.7, 5.1, 1.6],
+       [5.4, 3. , 4.5, 1.5],
+       [6. , 3.4, 4.5, 1.6],
+       [6.7, 3.1, 4.7, 1.5],
+       [6.3, 2.3, 4.4, 1.3],
+       [5.6, 3. , 4.1, 1.3],
+       [5.5, 2.5, 4. , 1.3],
+       [5.5, 2.6, 4.4, 1.2],
+       [6.1, 3. , 4.6, 1.4],
+       [5.8, 2.6, 4. , 1.2],
+       [5. , 2.3, 3.3, 1. ],
+       [5.6, 2.7, 4.2, 1.3],
+       [5.7, 3. , 4.2, 1.2],
+       [5.7, 2.9, 4.2, 1.3],
+       [6.2, 2.9, 4.3, 1.3],
+       [5.1, 2.5, 3. , 1.1],
+       [5.7, 2.8, 4.1, 1.3],
+       [6.3, 3.3, 6. , 2.5],
+       [5.8, 2.7, 5.1, 1.9],
+       [7.1, 3. , 5.9, 2.1],
+       [6.3, 2.9, 5.6, 1.8],
+       [6.5, 3. , 5.8, 2.2],
+       [7.6, 3. , 6.6, 2.1],
+       [4.9, 2.5, 4.5, 1.7],
+       [7.3, 2.9, 6.3, 1.8],
+       [6.7, 2.5, 5.8, 1.8],
+       [7.2, 3.6, 6.1, 2.5],
+       [6.5, 3.2, 5.1, 2. ],
+       [6.4, 2.7, 5.3, 1.9],
+       [6.8, 3. , 5.5, 2.1],
+       [5.7, 2.5, 5. , 2. ],
+       [5.8, 2.8, 5.1, 2.4],
+       [6.4, 3.2, 5.3, 2.3],
+       [6.5, 3. , 5.5, 1.8],
+       [7.7, 3.8, 6.7, 2.2],
+       [7.7, 2.6, 6.9, 2.3],
+       [6. , 2.2, 5. , 1.5],
+       [6.9, 3.2, 5.7, 2.3],
+       [5.6, 2.8, 4.9, 2. ],
+       [7.7, 2.8, 6.7, 2. ],
+       [6.3, 2.7, 4.9, 1.8],
+       [6.7, 3.3, 5.7, 2.1],
+       [7.2, 3.2, 6. , 1.8],
+       [6.2, 2.8, 4.8, 1.8],
+       [6.1, 3. , 4.9, 1.8],
+       [6.4, 2.8, 5.6, 2.1],
+       [7.2, 3. , 5.8, 1.6],
+       [7.4, 2.8, 6.1, 1.9],
+       [7.9, 3.8, 6.4, 2. ],
+       [6.4, 2.8, 5.6, 2.2],
+       [6.3, 2.8, 5.1, 1.5],
+       [6.1, 2.6, 5.6, 1.4],
+       [7.7, 3. , 6.1, 2.3],
+       [6.3, 3.4, 5.6, 2.4],
+       [6.4, 3.1, 5.5, 1.8],
+       [6. , 3. , 4.8, 1.8],
+       [6.9, 3.1, 5.4, 2.1],
+       [6.7, 3.1, 5.6, 2.4],
+       [6.9, 3.1, 5.1, 2.3],
+       [5.8, 2.7, 5.1, 1.9],
+       [6.8, 3.2, 5.9, 2.3],
+       [6.7, 3.3, 5.7, 2.5],
+       [6.7, 3. , 5.2, 2.3],
+       [6.3, 2.5, 5. , 1.9],
+       [6.5, 3. , 5.2, 2. ],
+       [6.2, 3.4, 5.4, 2.3],
+       [5.9, 3. , 5.1, 1.8]])
+iris_df = pd.DataFrame(data = iris_data['data'], columns = iris_data['feature_names'])
+iris_df
+sepal length (cm)	sepal width (cm)	petal length (cm)	petal width (cm)
+0	5.1	3.5	1.4	0.2
+1	4.9	3.0	1.4	0.2
+2	4.7	3.2	1.3	0.2
+3	4.6	3.1	1.5	0.2
+4	5.0	3.6	1.4	0.2
+...	...	...	...	...
+145	6.7	3.0	5.2	2.3
+146	6.3	2.5	5.0	1.9
+147	6.5	3.0	5.2	2.0
+148	6.2	3.4	5.4	2.3
+149	5.9	3.0	5.1	1.8
+150 rows × 4 columns
+
+iris_df['Iris type'] = iris_data['target']
+iris_df.head()
+sepal length (cm)	sepal width (cm)	petal length (cm)	petal width (cm)	Iris type
+0	5.1	3.5	1.4	0.2	0
+1	4.9	3.0	1.4	0.2	0
+2	4.7	3.2	1.3	0.2	0
+3	4.6	3.1	1.5	0.2	0
+4	5.0	3.6	1.4	0.2	0
+# Dataset shape
+print(f"Dataset shape: {iris.shape}")
+# Basic information
+iris.info()
+Dataset shape: (150, 5)
+<class 'pandas.DataFrame'>
+RangeIndex: 150 entries, 0 to 149
+Data columns (total 5 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   sepal_length  150 non-null    float64
+ 1   sepal_width   150 non-null    float64
+ 2   petal_length  150 non-null    float64
+ 3   petal_width   150 non-null    float64
+ 4   species       150 non-null    str    
+dtypes: float64(4), str(1)
+memory usage: 6.0 KB
+# Statistical summary
+iris.describe()
+sepal_length	sepal_width	petal_length	petal_width
+count	150.000000	150.000000	150.000000	150.000000
+mean	5.843333	3.057333	3.758000	1.199333
+std	0.828066	0.435866	1.765298	0.762238
+min	4.300000	2.000000	1.000000	0.100000
+25%	5.100000	2.800000	1.600000	0.300000
+50%	5.800000	3.000000	4.350000	1.300000
+75%	6.400000	3.300000	5.100000	1.800000
+max	7.900000	4.400000	6.900000	2.500000
+# Check for missing values
+print("\nMissing values per column:")
+print(iris.isnull().sum())
+Missing values per column:
+sepal_length    0
+sepal_width     0
+petal_length    0
+petal_width     0
+species         0
+dtype: int64
+ 
+from sklearn.preprocessing import LabelEncoder
+!pip install scikit-learn
+Requirement already satisfied: scikit-learn in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (1.9.0)
+Requirement already satisfied: numpy>=1.24.1 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (2.4.6)
+Requirement already satisfied: scipy>=1.10.0 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (1.17.1)
+Requirement already satisfied: joblib>=1.4.0 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (1.5.3)
+Requirement already satisfied: narwhals>=2.0.1 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (2.22.1)
+Requirement already satisfied: threadpoolctl>=3.5.0 in C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from scikit-learn) (3.6.0)
+[notice] A new release of pip is available: 26.1.1 -> 26.1.2
+[notice] To update, run: C:\Users\Srf\AppData\Local\Python\pythoncore-3.14-64\python.exe -m pip install --upgrade pip
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+iris = sns.load_dataset('iris')
+print("First 5 Rows")
+print(iris.head())
+print("\nDataset Shape:")
+print(iris.shape)
+print("\nDataset Info:")
+print(iris.info())
+print("\nStatistical Summary:")
+print(iris.describe())
+
+print("\nMissing Values:")
+print(iris.isnull().sum())
+
+
+print("\nSpecies Count:")
+print(iris['species'].value_counts())
+
+
+iris.hist(figsize=(10,8))
+plt.suptitle("Histogram of Iris Features")
+plt.show()
+
+
+plt.figure(figsize=(8,5))
+sns.boxplot(data=iris.drop('species', axis=1))
+plt.title("Boxplot of Numerical Features")
+plt.show()
+
+
+plt.figure(figsize=(8,5))
+sns.scatterplot(
+    data=iris,
+    x='sepal_length',
+    y='sepal_width',
+    hue='species'
+)
+plt.title("Sepal Length vs Sepal Width")
+plt.show()
+
+sns.pairplot(iris, hue='species')
+plt.show()
+
+corr = iris.drop('species', axis=1).corr()
+
+plt.figure(figsize=(8,6))
+sns.heatmap(
+    corr,
+    annot=True,
+    cmap='coolwarm'
+)
+
+plt.title("Correlation Heatmap")
+plt.show()
+First 5 Rows
+   sepal_length  sepal_width  petal_length  petal_width species
+0           5.1          3.5           1.4          0.2  setosa
+1           4.9          3.0           1.4          0.2  setosa
+2           4.7          3.2           1.3          0.2  setosa
+3           4.6          3.1           1.5          0.2  setosa
+4           5.0          3.6           1.4          0.2  setosa
+
+Dataset Shape:
+(150, 5)
+
+Dataset Info:
+<class 'pandas.DataFrame'>
+RangeIndex: 150 entries, 0 to 149
+Data columns (total 5 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   sepal_length  150 non-null    float64
+ 1   sepal_width   150 non-null    float64
+ 2   petal_length  150 non-null    float64
+ 3   petal_width   150 non-null    float64
+ 4   species       150 non-null    str    
+dtypes: float64(4), str(1)
+memory usage: 6.0 KB
+None
+
+Statistical Summary:
+       sepal_length  sepal_width  petal_length  petal_width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.057333      3.758000     1.199333
+std        0.828066     0.435866      1.765298     0.762238
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+
+Missing Values:
+sepal_length    0
+sepal_width     0
+petal_length    0
+petal_width     0
+species         0
+dtype: int64
+
+Species Count:
+species
+setosa        50
+versicolor    50
+virginica     50
+Name: count, dtype: int64
+
+
+
+
+
+ 
